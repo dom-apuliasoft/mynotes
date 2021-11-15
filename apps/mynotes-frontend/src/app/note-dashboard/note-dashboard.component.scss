@@ -1,0 +1,31 @@
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: clamp(15rem, 100%, 800px);
+  margin: auto;
+
+  .note {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+    h2 {
+      font-size: 1.75em;
+      line-height: 2;
+    }
+
+    p {
+      font-size: 1em;
+    }
+
+    .actions {
+      display: flex;
+      gap: .5rem;
+      align-self: flex-end;
+    }
+  }
+}
