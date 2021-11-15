@@ -7,28 +7,28 @@ export class NotesController {
   constructor(private notesService: NotesService) {}
 
   @Get('')
-  getNotes(): Note[] {
+  async getNotes() {
     return this.notesService.getAll();
   }
 
   @Get('/:id')
-  getNote(@Param('id') id: string): Note {
+  async getNote(@Param('id') id: string) {
     return this.notesService.get(id);
   }
 
   @Post('')
-  createNote(@Body() note: Note): NoteCreationResponse {
+  async createNote(@Body() note: Note): Promise<NoteCreationResponse> {
     this.notesService.create(note);
     return { note };
   }
 
   @Patch('')
-  updateNote(@Body() note: Note): Note {
+  async updateNote(@Body() note: Note) {
     return this.notesService.update(note);
   }
 
   @Delete('/:id')
-  deleteNote(@Param('id') id: string): Note {
+  async deleteNote(@Param('id') id: string) {
     return this.notesService.delete(id);
   }
 }

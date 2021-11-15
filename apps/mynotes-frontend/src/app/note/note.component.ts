@@ -30,7 +30,7 @@ export class NoteComponent implements OnInit {
   }
 
   getNote(): void {
-    const id = this.route.snapshot.paramMap.get('id')!;
+    const id = +this.route.snapshot.paramMap.get('id')!;
     this.noteService.getNote(id).subscribe((data) => this.setFetchedNote(data));
   }
 

@@ -20,7 +20,7 @@ export class NoteService {
     return this.httpClient.patch<Note>(this.baseUrl + '/notes', note);
   }
 
-  deleteNote(id: string): Observable<Note> {
+  deleteNote(id: number): Observable<Note> {
     return this.httpClient.delete<Note>(`${this.baseUrl}/notes/${id}`);
   }
 
@@ -28,7 +28,7 @@ export class NoteService {
     return this.httpClient.post<Note>(this.baseUrl + '/notes', note);
   }
 
-  getNote(id: string): Observable<Note> {
+  getNote(id: number): Observable<Note> {
     return this.httpClient.get<Note>(`${this.baseUrl}/notes/${id}`);
   }
 }

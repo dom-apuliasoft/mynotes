@@ -24,7 +24,7 @@ export class NoteDashboardComponent implements OnInit {
   }
 
   deleteNote(note: Note): void {
-    const id = note.id || '';
+    const id = note.id || 0;
     this.noteService.deleteNote(id).subscribe((note) => {
       const index = this.notes.findIndex(n => n.id === note.id);
       this.notes.splice(index, 1);
