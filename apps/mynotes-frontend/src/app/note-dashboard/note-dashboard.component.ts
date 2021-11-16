@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from '../note.service';
 
-import { Note } from '@mynotes/api-types';
+import { NoteEntity } from '@mynotes/api-types';
 
 @Component({
   selector: 'mynotes-note-dashboard',
@@ -9,7 +9,7 @@ import { Note } from '@mynotes/api-types';
   styleUrls: ['./note-dashboard.component.scss'],
 })
 export class NoteDashboardComponent implements OnInit {
-  notes: Note[] = [];
+  notes: NoteEntity[] = [];
 
   constructor(private noteService: NoteService) {}
 
@@ -23,11 +23,17 @@ export class NoteDashboardComponent implements OnInit {
     });
   }
 
-  deleteNote(note: Note): void {
-    const id = note.id || 0;
-    this.noteService.deleteNote(id).subscribe((note) => {
-      const index = this.notes.findIndex(n => n.id === note.id);
-      this.notes.splice(index, 1);
+  deleteNote(note: NoteEntity): void {
+    const id = note.id || -1;
+    this.noteService
+      .deleteNote(id)
+      .subscribe((deletedNote) => this.removeNote(deletedNote));
+  }
+
+  private removeNote(note: NoteEntity) {
+    const index = this.notes.findIndex((n) => {
+      return n.id === note.id;
     });
+    if (index !== -1) this.notes.splice(index, 1);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Note } from '@mynotes/api-types';
+import { NoteEntity } from '@mynotes/api-types';
 import { NoteService } from '../note.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./note.component.scss'],
 })
 export class NoteComponent implements OnInit {
-  note?: Note;
+  note?: NoteEntity;
 
   data: FormGroup = this.formBuilder.group({
     title: [''],
@@ -34,7 +34,7 @@ export class NoteComponent implements OnInit {
     this.noteService.getNote(id).subscribe((data) => this.setFetchedNote(data));
   }
 
-  private setFetchedNote(note: Note): void {
+  private setFetchedNote(note: NoteEntity): void {
     this.note = note;
     this.data.patchValue(note);
   }
@@ -44,9 +44,15 @@ export class NoteComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const newNote = this.data.value as Note;
-    newNote.id = this.note?.id;
-    if (this.note) this.noteService.patchNote(newNote).subscribe();
+    const newContent = this.data.value as NoteEntity;
+
+    this.note = {
+      ...this.note,
+      ...newContent,
+    };
+
+    this.noteService.saveNote(this.note).subscribe();
     this.goBack();
+    return;
   }
 }

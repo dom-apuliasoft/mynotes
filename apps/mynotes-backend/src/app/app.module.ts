@@ -3,7 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { NoteEntity } from "./notes/note.entity";
+import { NoteEntity } from "@mynotes/api-types";
 import { NotesController } from "./notes/notes.controller";
 import { NotesService } from "./notes/notes.service";
 

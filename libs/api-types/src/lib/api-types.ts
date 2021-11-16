@@ -1,4 +1,4 @@
-export type Note = {
+/*export type Note = {
   id?: number;
   title: string;
   content: string;
@@ -8,4 +8,6 @@ export type Note = {
 export type NoteCreationResponse = {
   errors?: any;
   note?: Note;
-};
+};*/
+
+export { NoteEntity } from "./note.entity";

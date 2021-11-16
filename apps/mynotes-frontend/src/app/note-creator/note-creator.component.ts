@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Note } from '@mynotes/api-types';
+import { NoteEntity } from '@mynotes/api-types';
 import { NoteService } from '../note.service';
 
 @Component({
@@ -24,8 +24,8 @@ export class NoteCreatorComponent {
   ) {}
 
   onSubmit(): void {
-    const note = this.data.value as Note;
-    this.noteService.createNote(note).subscribe();
+    const note = this.data.value as NoteEntity;
+    this.noteService.saveNote(note).subscribe();
     this.goBack();
   }
 
