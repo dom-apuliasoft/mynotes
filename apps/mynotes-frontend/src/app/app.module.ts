@@ -7,15 +7,9 @@ import { NoteDashboardComponent } from './note-dashboard/note-dashboard.componen
 import { AppRoutingModule } from './app-routing.module';
 import { NoteComponent } from './note/note.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NoteCreatorComponent } from './note-creator/note-creator.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NoteDashboardComponent,
-    NoteComponent,
-    NoteCreatorComponent,
-  ],
+  declarations: [AppComponent, NoteDashboardComponent, NoteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

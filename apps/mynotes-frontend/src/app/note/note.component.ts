@@ -30,8 +30,12 @@ export class NoteComponent implements OnInit {
   }
 
   getNote(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!;
-    this.noteService.getNote(id).subscribe((data) => this.setFetchedNote(data));
+    const id = this.route.snapshot.paramMap.get('id');
+    if (!id) return;
+
+    this.noteService
+      .getNote(+id)
+      .subscribe((data) => this.setFetchedNote(data));
   }
 
   private setFetchedNote(note: NoteEntity): void {
@@ -51,8 +55,6 @@ export class NoteComponent implements OnInit {
       ...newContent,
     };
 
-    this.noteService.saveNote(this.note).subscribe();
-    this.goBack();
-    return;
+    this.noteService.saveNote(this.note).subscribe(() => this.goBack());
   }
 }
