@@ -7,9 +7,10 @@ import { NoteDashboardComponent } from './note-dashboard/note-dashboard.componen
 import { AppRoutingModule } from './app-routing.module';
 import { NoteComponent } from './note/note.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormErrorComponent } from './form-error/form-error.component';
 
 @NgModule({
-  declarations: [AppComponent, NoteDashboardComponent, NoteComponent],
+  declarations: [AppComponent, NoteDashboardComponent, NoteComponent, FormErrorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

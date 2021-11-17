@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { NoteEntity } from '@mynotes/api-types';
 import { NoteService } from '../note.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mynotes-note',
@@ -14,8 +14,8 @@ export class NoteComponent implements OnInit {
   note?: NoteEntity;
 
   data: FormGroup = this.formBuilder.group({
-    title: [''],
-    content: [''],
+    title: ['', [Validators.required, Validators.maxLength(32)]],
+    content: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   constructor(
@@ -55,6 +55,9 @@ export class NoteComponent implements OnInit {
       ...newContent,
     };
 
-    this.noteService.saveNote(this.note).subscribe(() => this.goBack());
+    this.noteService.saveNote(this.note).subscribe(
+      () => this.goBack(),
+      (err) => alert(err.error.message)
+    );
   }
 }
