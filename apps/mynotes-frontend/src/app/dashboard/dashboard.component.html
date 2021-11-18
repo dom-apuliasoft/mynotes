@@ -1,0 +1,8 @@
+<div class="flex flex-col items-center">
+  <ng-content select="[dashboard-title]"></ng-content>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+    <ng-content select="[dashboard-content]"></ng-content>
+  </div>
+  <ng-content select="[dashboard-action]"></ng-content>
+</div>
+<ng-content></ng-content>

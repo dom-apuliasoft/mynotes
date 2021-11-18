@@ -14,6 +14,7 @@ import { NoteComponent } from './note/note.component';
 import { NotespaceComponent } from './notespace/notespace.component';
 import { NotespaceViewComponent } from './notespace-view/notespace-view.component';
 import { NotesModalComponent } from './notes-modal/notes-modal.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NotesModalComponent } from './notes-modal/notes-modal.component';
     NotespaceComponent,
     NotespaceViewComponent,
     NotesModalComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
-<div class="flex flex-col items-center">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
-    <mynotes-note *ngFor="let note of notes" [note]="note" (delete)="deleteNote($event)"></mynotes-note>
-  </div>
-  <button class="btn btn-blue self-center" routerLink="/notes/create-new">Add note</button>
-</div>
+<mynotes-dashboard>
+  <h2 class="text-gray-800 text-3xl font-semibold" dashboard-title>My Notes</h2>
+  <mynotes-note *ngFor="let note of notes" [note]="note" (delete)="deleteNote($event)" dashboard-content></mynotes-note>
+  <button class="btn btn-blue self-center" routerLink="/notes/create-new" dashboard-action>Add note</button>
+</mynotes-dashboard>
