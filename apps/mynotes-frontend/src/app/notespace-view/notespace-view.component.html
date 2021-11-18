@@ -1,0 +1,8 @@
+<div class="flex flex-col items-center" *ngIf="notespace">
+  <h2 class="text-gray-800 text-3xl font-semibold">{{notespace.name}}</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+    <mynotes-note *ngFor="let note of notespace?.notes" [note]="note" (delete)="removeNote($event)"></mynotes-note>
+  </div>
+  <button class="btn btn-blue self-center" (click)="isShowingModal = true">Add note</button>
+  <mynotes-notes-modal *ngIf="isShowingModal" [notespace]="notespace" (closed)="isShowingModal = false" (added)="onAdd($event)"></mynotes-notes-modal>
+</div>

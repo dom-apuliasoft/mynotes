@@ -1,0 +1,6 @@
+<div class="flex flex-col items-center">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+    <mynotes-notespace *ngFor="let notespace of notespaces" [notespace]="notespace" (delete)="deleteNotespace($event)"></mynotes-notespace>
+  </div>
+  <button class="btn btn-blue self-center" (click)="createNotespace()">New notespace</button>
+</div>

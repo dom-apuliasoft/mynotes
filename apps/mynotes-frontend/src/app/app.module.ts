@@ -5,12 +5,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NoteDashboardComponent } from './note-dashboard/note-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NoteComponent } from './note/note.component';
+import { NoteEditorComponent } from './note-editor/note-editor.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormErrorComponent } from './form-error/form-error.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NotespaceDashboardComponent } from './notespace-dashboard/notespace-dashboard.component';
+import { NoteComponent } from './note/note.component';
+import { NotespaceComponent } from './notespace/notespace.component';
+import { NotespaceViewComponent } from './notespace-view/notespace-view.component';
+import { NotesModalComponent } from './notes-modal/notes-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, NoteDashboardComponent, NoteComponent, FormErrorComponent],
+  declarations: [
+    AppComponent,
+    NoteDashboardComponent,
+    NoteEditorComponent,
+    FormErrorComponent,
+    NavbarComponent,
+    NotespaceDashboardComponent,
+    NoteComponent,
+    NotespaceComponent,
+    NotespaceViewComponent,
+    NotesModalComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

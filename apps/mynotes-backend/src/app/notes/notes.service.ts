@@ -20,12 +20,16 @@ export class NotesService {
   }
 
   async get(id: number): Promise<NoteEntity> {
-    const note = await this.notesRepository.findOne(id);
+    const note = await this.notesRepository.findOne(id, {
+      relations: ['notespaces'],
+    });
     return note;
   }
 
   async getAll(): Promise<NoteEntity[]> {
-    const notes = await this.notesRepository.find();
+    const notes = await this.notesRepository.find({
+      relations: ['notespaces'],
+    });
     return notes;
   }
 

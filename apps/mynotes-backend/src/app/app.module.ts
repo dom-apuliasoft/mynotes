@@ -3,9 +3,11 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { NoteEntity } from "@mynotes/api-types";
+import { NoteEntity, NotespaceEntity } from "@mynotes/api-types";
 import { NotesController } from "./notes/notes.controller";
 import { NotesService } from "./notes/notes.service";
+import { NotespacesService } from "./notespaces/notespaces.service";
+import { NotespacesController } from "./notespaces/notespaces.controller";
 
 @Module({
   imports: [
@@ -15,9 +17,9 @@ import { NotesService } from "./notes/notes.service";
       autoLoadEntities: true,
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([NoteEntity]),
+    TypeOrmModule.forFeature([NoteEntity, NotespaceEntity]),
   ],
-  controllers: [AppController, NotesController],
-  providers: [AppService, NotesService],
+  controllers: [AppController, NotesController, NotespacesController],
+  providers: [AppService, NotesService, NotespacesService],
 })
 export class AppModule {}

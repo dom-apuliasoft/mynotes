@@ -1,0 +1,7 @@
+<div class="w-full max-w-md py-4 px-8 bg-white shadow rounded-lg">
+  <h2 class="text-gray-800 text-3xl font-semibold">{{notespace.name}}</h2>
+  <div class="flex justify-end mt-4 gap-2">
+    <button class="btn btn-blue-outline" (click)="this.delete.emit(notespace)">Delete</button>
+    <button class="btn btn-blue" routerLink="/notespaces/{{notespace.id}}">Open</button>
+  </div>
+</div>

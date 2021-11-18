@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NoteComponent } from './note.component';
+import { NotespaceDashboardComponent } from './notespace-dashboard.component';
 
-describe('NoteComponent', () => {
-  let component: NoteComponent;
-  let fixture: ComponentFixture<NoteComponent>;
+describe('NotespacesComponent', () => {
+  let component: NotespaceDashboardComponent;
+  let fixture: ComponentFixture<NotespaceDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NoteComponent ]
+      declarations: [ NotespaceDashboardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NoteComponent);
+    fixture = TestBed.createComponent(NotespaceDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

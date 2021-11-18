@@ -1,5 +1,14 @@
 import { MaxLength, MinLength } from 'class-validator';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+import { NotespaceEntity } from '..';
 
 @Entity()
 export class NoteEntity {
@@ -13,6 +22,12 @@ export class NoteEntity {
   @Column()
   @MinLength(8, { message: 'Content must be at least 8 characters' })
   content?: string;
+
+  @ManyToMany((type) => NotespaceEntity, (notespace) => notespace.notes, {
+    cascade: true,
+  })
+  @JoinTable()
+  notespaces?: NotespaceEntity[];
 
   @CreateDateColumn()
   createdAt?: Date;
