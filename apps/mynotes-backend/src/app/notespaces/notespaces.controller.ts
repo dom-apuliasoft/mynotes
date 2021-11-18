@@ -9,13 +9,11 @@ import {
 } from '@nestjs/common';
 import { NoteEntity, NotespaceEntity } from '@mynotes/api-types';
 import { NotespacesService } from './notespaces.service';
-import { NotesService } from '../notes/notes.service';
 
 @Controller('notespaces')
 export class NotespacesController {
   constructor(
     private notespacesService: NotespacesService,
-    private notesService: NotesService
   ) {}
 
   @Get('')
@@ -36,10 +34,7 @@ export class NotespacesController {
   async getAvailableNotes(
     @Param('id', ParseIntPipe) id: number
   ): Promise<NoteEntity[]> {
-    const notes = await this.notesService.getAll();
-    const available = notes.filter(
-      (note) => !note.notespaces || !note.notespaces.find((notespace) => notespace.id === id)
-    );
+    const available = this.notespacesService.getAvailableNotes(id);
     return available;
   }
 
@@ -48,19 +43,20 @@ export class NotespacesController {
     @Param('id', ParseIntPipe) id: number,
     @Body() note: NoteEntity
   ): Promise<NoteEntity> {
-    const notespace = await this.getNotespace(id);
-    note.notespaces.push(notespace);
-    return await this.notesService.save(note);
+    const addedNote = await this.notespacesService.addNote(id, note);
+    return addedNote;
   }
 
   @Delete('/:notespaceId/:noteId')
   async removeNote(
     @Param('notespaceId', ParseIntPipe) notespaceId: number,
-    @Param('noteId', ParseIntPipe) noteId: number,
+    @Param('noteId', ParseIntPipe) noteId: number
   ): Promise<NoteEntity> {
-    const note = await this.notesService.get(noteId);
-    note.notespaces = note.notespaces.filter(ns => ns.id !== notespaceId);
-    return await this.notesService.save(note);
+    const removed = await this.notespacesService.removeNote(
+      notespaceId,
+      noteId
+    );
+    return removed;
   }
 
   @Put('')
