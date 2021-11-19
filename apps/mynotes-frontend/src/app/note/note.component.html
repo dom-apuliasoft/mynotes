@@ -1,8 +1,14 @@
-<div class="w-full max-w-md py-4 px-8 bg-white shadow rounded-lg">
-  <h2 class="text-gray-800 text-3xl font-semibold">{{note.title}}</h2>
-  <p class="mt-2 text-gray-600 leading-5 whitespace-pre-line">{{note.content}}</p>
-  <div class="flex justify-end mt-4 gap-2">
+<mynotes-card>
+  <h2 class="text-gray-800 text-3xl font-semibold" card-title>{{note.title}}</h2>
+  <div card-content>
+    <div class="flex flex-wrap my-2 gap-1" *ngIf="note.notespaces">
+      <div *ngFor="let notespace of note.notespaces" [style.background-color]="notespace.color"
+        class="w-5 h-5 rounded-full" [title]="notespace.name" routerLink="/notespaces/{{notespace.id}}"></div>
+    </div>
+    <p class="mt-2 text-gray-600 leading-5 whitespace-pre-line">{{note.content}}</p>
+  </div>
+  <div class="flex justify-end mt-4 gap-2" card-action>
     <button class="btn btn-blue-outline" (click)="this.delete.emit(note)">Delete</button>
     <button class="btn btn-blue" routerLink="/notes/{{note.id}}">Expand</button>
   </div>
-</div>
+</mynotes-card>
