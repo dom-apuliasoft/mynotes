@@ -1,5 +1,5 @@
 <mynotes-dashboard>
   <h2 class="text-gray-800 text-3xl font-semibold" dashboard-title>My Notes</h2>
   <mynotes-note *ngFor="let note of notes" [note]="note" (delete)="deleteNote($event)" dashboard-content></mynotes-note>
-  <button class="btn btn-blue self-center" routerLink="/notes/create-new" dashboard-action>Add note</button>
+  <button class="btn btn-blue self-center" routerLink="/notes/edit" dashboard-action>Add note</button>
 </mynotes-dashboard>

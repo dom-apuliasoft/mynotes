@@ -1,3 +1,4 @@
+import { IsNotEmpty, Length } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToMany } from 'typeorm';
 import { NoteEntity } from '..';
 
@@ -7,7 +8,12 @@ export class NotespaceEntity {
   id?: number;
 
   @Column()
+  @IsNotEmpty()
   name?: string;
+
+  @Column()
+  @Length(3, 7, { message: 'Color must be valid'})
+  color?: string;
 
   @ManyToMany(() => NoteEntity, note => note.notespaces)
   notes?: NoteEntity[];

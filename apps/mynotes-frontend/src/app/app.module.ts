@@ -15,6 +15,8 @@ import { NotespaceComponent } from './notespace/notespace.component';
 import { NotespaceViewComponent } from './notespace-view/notespace-view.component';
 import { NotesModalComponent } from './notes-modal/notes-modal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CardComponent } from './card/card.component';
+import { NotespaceEditorComponent } from './notespace-editor/notespace-editor.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NotespaceViewComponent,
     NotesModalComponent,
     DashboardComponent,
+    CardComponent,
+    NotespaceEditorComponent,
   ],
   imports: [
     BrowserModule,

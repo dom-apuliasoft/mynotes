@@ -1,0 +1,27 @@
+<div class="w-full flex flex-col items-center">
+  <h1 class="text-gray-800 text-3xl font-semibold m-4">Notespace View</h1>
+  <form autocomplete="off" class="w-full max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col"
+    [formGroup]="data" (ngSubmit)="onSubmit()">
+    <div class="mb-4 flex flex-col gap-2">
+      <input
+        class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="name" type="text" formControlName="name" placeholder="My awesome notespace!">
+      <mynotes-form-error class="self-end" [control]="data.get('name')"></mynotes-form-error>
+    </div>
+
+    <div class="mb-4 flex flex-col gap-2">
+      <label>Colorstamp: <input type="color" name="color" formControlName="color"></label>
+      <mynotes-form-error class="self-end" [control]="data.get('color')"></mynotes-form-error>
+    </div>
+
+    <div *ngIf="notespace" class="flex justify-center gap-4 text-gray-600 text-sm mb-4">
+      <small *ngIf="notespace.createdAt">Created at: {{ notespace.createdAt | date:'d/M/yy' }}</small>
+      <small *ngIf="notespace.updatedAt">Last update: {{ notespace.updatedAt | date:'d/M/yy' }}</small>
+    </div>
+
+    <div class="flex gap-4 self-end">
+      <button type="button" class="btn btn-blue-outline" (click)="goBack()">Cancel</button>
+      <button type="submit" class="btn btn-blue disabled:opacity-50" [disabled]="!data.valid">Save</button>
+    </div>
+  </form>
+</div>

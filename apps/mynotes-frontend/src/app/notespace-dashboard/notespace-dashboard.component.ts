@@ -17,7 +17,7 @@ export class NotespaceDashboardComponent implements OnInit {
   }
 
   createNotespace(): void {
-    const notespace: NotespaceEntity = { name: 'New notespace' };
+    const notespace: NotespaceEntity = { name: 'New notespace', color: '#000' };
     this.notespaceService.save(notespace).subscribe((data) => {
       this.notespaces.push(data);
     });

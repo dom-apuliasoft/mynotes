@@ -2,5 +2,5 @@
   <h2 class="text-gray-800 text-3xl font-semibold" dashboard-title>My notespaces</h2>
   <mynotes-notespace *ngFor="let notespace of notespaces" [notespace]="notespace" (delete)="deleteNotespace($event)"
     dashboard-content></mynotes-notespace>
-  <button class="btn btn-blue self-center" (click)="createNotespace()" dashboard-action>New notespace</button>
+  <button class="btn btn-blue self-center" routerLink="/notespaces/edit" dashboard-action>New notespace</button>
 </mynotes-dashboard>
