@@ -1,8 +1,17 @@
 <mynotes-dashboard *ngIf="notespace">
-  <h2 class="text-gray-800 text-3xl font-semibold" dashboard-title>{{notespace.name}}</h2>
-  <mynotes-note *ngFor="let note of notespace.notes" [note]="note" (delete)="removeNote($event)" dashboard-content>
-  </mynotes-note>
+  <div class="flex items-center gap-4" dashboard-title>
+    <div [style.background-color]="notespace.color" class="w-5 h-5 rounded-full" [title]="notespace.name">
+    </div>
+    <h2 class="text-gray-800 text-3xl font-semibold">{{notespace.name}}</h2>
+  </div>
+  <ng-container *ngIf="notespace.notes?.length; else noNotes" dashboard-content>
+    <mynotes-note *ngFor="let note of notespace.notes" [note]="note" (delete)="removeNote($event)"></mynotes-note>
+  </ng-container>
   <button class="btn btn-blue self-center" (click)="isShowingModal = true" dashboard-action>Add note</button>
   <mynotes-notes-modal *ngIf="isShowingModal" [notespace]="notespace" (closed)="isShowingModal = false"
     (added)="onAdd($event)"></mynotes-notes-modal>
 </mynotes-dashboard>
+
+<ng-template #noNotes>
+  <p class="rounded p-4 bg-yellow-50 text-yellow-800 col-start-2 col-span-1">There aren't notes in this notespace yet.</p>
+</ng-template>

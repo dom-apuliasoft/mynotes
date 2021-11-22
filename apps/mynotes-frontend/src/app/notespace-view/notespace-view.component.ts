@@ -47,6 +47,9 @@ export class NotespaceViewComponent implements OnInit {
   }
 
   onAdd(note: NoteEntity) {
+    // We don't want to see other notespaces attached to note
+    note.notespaces = [];
+
     this.notespace?.notes?.push(note);
   }
 }

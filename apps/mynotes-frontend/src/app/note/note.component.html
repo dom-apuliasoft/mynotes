@@ -2,30 +2,37 @@
   <div class="flex justify-between items-center gap-8" card-title>
     <h2 class="text-gray-800 text-3xl font-semibold">{{note.title}}</h2>
     <fa-icon class="cursor-pointer hover:bg-red-50 hover:text-red-600 p-2 rounded-full" size="lg"
-      [icon]="note.isFavourite ? heartIcon.solid : heartIcon.regular" (click)="toggleFavourite(note)">
+      [icon]="note.isFavourite ? heartIcon.solid : heartIcon.regular"
+      [title]="note.isFavourite ? 'Remove from favourites' : 'Add to favourites'"
+      (click)="toggleFavourite(note)">
     </fa-icon>
   </div>
   <div card-content>
     <div class="flex flex-wrap my-2 gap-1" *ngIf="note.notespaces">
       <div *ngFor="let notespace of note.notespaces" [style.background-color]="notespace.color"
-        class="cursor-pointer w-5 h-5 rounded-full" [title]="notespace.name" routerLink="/notespaces/{{notespace.id}}"></div>
+        class="cursor-pointer w-5 h-5 rounded-full" [title]="notespace.name" routerLink="/notespaces/{{notespace.id}}">
+      </div>
     </div>
     <p class="mt-2 text-gray-600 leading-5 whitespace-pre-line">{{note.content}}</p>
   </div>
   <div class="flex justify-end mt-4 gap-2" card-action>
-    <button class="cursor-pointer bg-red-50 rounded-full text-red-500 hover:bg-red-500 hover:text-red-50 fill-current w-10 h-10"
-      (click)="this.delete.emit(note)">
+    <button
+      class="cursor-pointer bg-red-50 rounded-full text-red-500 hover:bg-red-500 hover:text-red-50 fill-current w-10 h-10"
+      (click)="this.delete.emit(note)" title="Remove">
       <fa-icon size="lg" [icon]="deleteIcon"></fa-icon>
     </button>
-    <button class="cursor-pointer bg-blue-50 rounded-full text-blue-500 hover:bg-blue-500 hover:text-blue-50 fill-current w-10 h-10"
+    <button
+      class="cursor-pointer bg-blue-50 rounded-full text-blue-500 hover:bg-blue-500 hover:text-blue-50 fill-current w-10 h-10"
       (click)="isShowingModal = true">
-      <fa-icon size="lg" [icon]="addIcon"></fa-icon>
+      <fa-icon size="lg" [icon]="addIcon" title="Add To Notespace"></fa-icon>
     </button>
-    <button class="cursor-pointer bg-blue-50 rounded-full text-blue-500 hover:bg-blue-500 hover:text-blue-50 fill-current w-10 h-10"
-      routerLink="/notes/{{note.id}}">
+    <button
+      class="cursor-pointer bg-blue-50 rounded-full text-blue-500 hover:bg-blue-500 hover:text-blue-50 fill-current w-10 h-10"
+      routerLink="/notes/{{note.id}}" title="Expand">
       <fa-icon size="lg" [icon]="expandIcon"></fa-icon>
     </button>
   </div>
 </mynotes-card>
-<mynotes-notespaces-modal *ngIf="isShowingModal" [note]="note" (closed)="isShowingModal = false" (added)="onAdd($event)">
+<mynotes-notespaces-modal *ngIf="isShowingModal" [note]="note" (closed)="isShowingModal = false"
+  (added)="onAdd($event)">
 </mynotes-notespaces-modal>
