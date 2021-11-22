@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { faStickyNote } from '@fortawesome/free-regular-svg-icons';
 
 export type AnchorRoute = {
   name: string;
@@ -12,6 +13,8 @@ export type AnchorRoute = {
 })
 export class NavbarComponent {
   @Input() routes: AnchorRoute[] = [];
+
+  noteIcon = faStickyNote;
 
   showMobileMenu = false;
 

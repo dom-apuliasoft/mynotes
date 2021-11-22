@@ -1,7 +1,12 @@
-<mynotes-card [color]="notespace.color ?? '#FFF'">
+<mynotes-card [color]="notespace.color ?? '#FFF'" #card>
   <h2 class="text-3xl font-semibold" card-title>{{notespace.name}}</h2>
   <div class="flex justify-end mt-4 gap-2" card-action>
-    <button class="btn btn-blue-outline" (click)="this.delete.emit(notespace)">Delete</button>
-    <button class="btn btn-blue" routerLink="/notespaces/{{notespace.id}}">Open</button>
+    <button [class]="card.textColor === '#FFF' ? buttonCSS.light : buttonCSS.dark" (click)="this.delete.emit(notespace)">
+      <fa-icon size="lg" [icon]="deleteIcon"></fa-icon>
+    </button>
+    <button [class]="card.textColor === '#FFF' ? buttonCSS.light : buttonCSS.dark"
+      routerLink="/notespaces/{{notespace.id}}">
+      <fa-icon size="lg" [icon]="expandIcon"></fa-icon>
+    </button>
   </div>
 </mynotes-card>

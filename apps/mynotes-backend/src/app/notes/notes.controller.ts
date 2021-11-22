@@ -17,7 +17,6 @@ export class NotesController {
 
   @Get('/favourites')
   async getFavouriteNotes(): Promise<NoteEntity[]> {
-    console.log('get fav');
     const notes = await this.notesService.getFavourites();
     return notes;
   }
