@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FavouriteNotesDashboardComponent } from './favourite-notes-dashboard/favourite-notes-dashboard.component';
 import { NoteDashboardComponent } from './note-dashboard/note-dashboard.component';
 import { NoteEditorComponent } from './note-editor/note-editor.component';
 import { NotespaceDashboardComponent } from './notespace-dashboard/notespace-dashboard.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   },
   { path: 'notespaces/:id', component: NotespaceViewComponent },
   { path: '', redirectTo: '/notes', pathMatch: 'full' },
+  { path: 'favourites', component: FavouriteNotesDashboardComponent }
 ];
 
 @NgModule({

@@ -59,4 +59,12 @@ export class NotespacesService {
     );
     return available;
   }
+
+  async getAvailableForNote(id: number): Promise<NoteEntity[]> {
+    const notespaces = await this.getAll();
+    const available = notespaces.filter(
+      (ns) => !ns.notes.find((note) => note.id === id)
+    );
+    return available;
+  }
 }

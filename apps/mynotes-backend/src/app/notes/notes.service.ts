@@ -29,7 +29,22 @@ export class NotesService {
   async getAll(): Promise<NoteEntity[]> {
     const notes = await this.notesRepository.find({
       relations: ['notespaces'],
+      order: {
+        isFavourite: 'DESC',
+        updatedAt: 'DESC',
+      },
     });
+    return notes;
+  }
+
+  async getFavourites(): Promise<NoteEntity[]> {
+    const notes = await this.notesRepository.find({
+      relations: ['notespaces'],
+      where: {
+        isFavourite: true,
+      },
+    });
+
     return notes;
   }
 

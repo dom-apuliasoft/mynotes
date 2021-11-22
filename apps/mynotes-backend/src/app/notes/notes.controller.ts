@@ -7,16 +7,18 @@ import {
   ParseIntPipe,
   Put,
 } from '@nestjs/common';
-import { NoteEntity } from '@mynotes/api-types';
+import { NoteEntity, NotespaceEntity } from '@mynotes/api-types';
 import { NotesService } from './notes.service';
+import { NotespacesService } from '../notespaces/notespaces.service';
 
 @Controller('notes')
 export class NotesController {
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService, private notespacesService: NotespacesService) {}
 
-  @Get('')
-  async getNotes(): Promise<NoteEntity[]> {
-    const notes = await this.notesService.getAll();
+  @Get('/favourites')
+  async getFavouriteNotes(): Promise<NoteEntity[]> {
+    console.log('get fav');
+    const notes = await this.notesService.getFavourites();
     return notes;
   }
 
@@ -24,6 +26,22 @@ export class NotesController {
   async getNote(@Param('id', ParseIntPipe) id: number): Promise<NoteEntity> {
     const note = await this.notesService.get(id);
     return note;
+  }
+
+  @Get('/:id/available-notespaces')
+  async getAvailableNotespaces(
+    @Param('id', ParseIntPipe) id: number
+  ): Promise<NotespaceEntity[]> {
+    const availableNotespaces = await this.notespacesService.getAvailableForNote(
+      id
+    );
+    return availableNotespaces;
+  }
+
+  @Get('')
+  async getNotes(): Promise<NoteEntity[]> {
+    const notes = await this.notesService.getAll();
+    return notes;
   }
 
   @Put('')

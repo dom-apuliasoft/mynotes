@@ -11,5 +11,6 @@ export class AppComponent {
   navbarRoutes: AnchorRoute[] = [
     { name: 'Home', route: '/' },
     { name: 'Notespaces', route: '/notespaces' },
+    { name: 'Favourites', route: '/favourites' }
   ];
 }

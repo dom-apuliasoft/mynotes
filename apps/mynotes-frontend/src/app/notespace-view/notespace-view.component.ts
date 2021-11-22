@@ -27,9 +27,10 @@ export class NotespaceViewComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) return;
 
-    this.notespaceService
-      .get(+id)
-      .subscribe((notespace) => (this.notespace = notespace));
+    this.notespaceService.get(+id).subscribe((notespace) => {
+      this.notespace = notespace;
+      console.log(this.notespace.notes);
+    });
   }
 
   removeNote(note: NoteEntity) {

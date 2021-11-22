@@ -198,29 +198,6 @@
       },
       "tags": [],
       "implicitDependencies": ["mynotes-frontend"]
-    },
-    "tailwind": {
-      "root": "libs/tailwind",
-      "sourceRoot": "libs/tailwind/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/tailwind/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/tailwind"],
-          "options": {
-            "jestConfig": "libs/tailwind/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "tags": []
     }
   }
 }

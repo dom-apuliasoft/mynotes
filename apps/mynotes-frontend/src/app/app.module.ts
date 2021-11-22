@@ -17,6 +17,10 @@ import { NotesModalComponent } from './notes-modal/notes-modal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
 import { NotespaceEditorComponent } from './notespace-editor/notespace-editor.component';
+import { ModalComponent } from './modal/modal.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FavouriteNotesDashboardComponent } from './favourite-notes-dashboard/favourite-notes-dashboard.component';
+import { NotespacesModalComponent } from './notespaces-modal/notespaces-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +37,16 @@ import { NotespaceEditorComponent } from './notespace-editor/notespace-editor.co
     DashboardComponent,
     CardComponent,
     NotespaceEditorComponent,
+    ModalComponent,
+    FavouriteNotesDashboardComponent,
+    NotespacesModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

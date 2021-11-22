@@ -18,7 +18,7 @@ export class NoteDashboardComponent implements OnInit {
   }
 
   getNotes(): void {
-    this.noteService.getNotes().subscribe((data) => {
+    this.noteService.getAll().subscribe((data) => {
       this.notes = data;
     });
   }
@@ -26,14 +26,11 @@ export class NoteDashboardComponent implements OnInit {
   deleteNote(note: NoteEntity): void {
     const id = note.id || -1;
     this.noteService
-      .deleteNote(id)
+      .delete(id)
       .subscribe((deletedNote) => this.removeNote(deletedNote));
   }
 
   private removeNote(note: NoteEntity) {
-    const index = this.notes.findIndex((n) => {
-      return n.id === note.id;
-    });
-    if (index !== -1) this.notes.splice(index, 1);
+    this.notes = this.notes.filter((n) => n.id !== note.id);
   }
 }

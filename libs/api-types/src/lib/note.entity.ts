@@ -23,6 +23,9 @@ export class NoteEntity {
   @MinLength(8, { message: 'Content must be at least 8 characters' })
   content?: string;
 
+  @Column({ default: false })
+  isFavourite?: boolean;
+
   @ManyToMany((type) => NotespaceEntity, (notespace) => notespace.notes, {
     cascade: true,
   })

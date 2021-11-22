@@ -15,8 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mynotes/api-types": ["libs/api-types/src/index.ts"],
-      "@mynotes/tailwind": ["libs/tailwind/src/index.ts"]
+      "@mynotes/api-types": ["libs/api-types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

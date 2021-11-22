@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { NoteEntity } from '@mynotes/api-types';
+import { NoteEntity, NotespaceEntity } from '@mynotes/api-types';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,19 +12,27 @@ export class NoteService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getNotes(): Observable<NoteEntity[]> {
+  getAll(): Observable<NoteEntity[]> {
     return this.httpClient.get<NoteEntity[]>(this.baseUrl + '/notes');
   }
 
-  deleteNote(id: number): Observable<NoteEntity> {
+  get(id: number): Observable<NoteEntity> {
+    return this.httpClient.get<NoteEntity>(`${this.baseUrl}/notes/${id}`);
+  }
+
+  getFavourites(): Observable<NoteEntity[]> {
+    return this.httpClient.get<NoteEntity[]>(`${this.baseUrl}/notes/favourites`);
+  }
+
+  getAvailableNotespaces(id: number): Observable<NotespaceEntity[]> {
+    return this.httpClient.get<NotespaceEntity[]>(`${this.baseUrl}/notes/${id}/available-notespaces`);
+  }
+
+  delete(id: number): Observable<NoteEntity> {
     return this.httpClient.delete<NoteEntity>(`${this.baseUrl}/notes/${id}`);
   }
 
-  saveNote(note: NoteEntity): Observable<NoteEntity> {
+  save(note: NoteEntity): Observable<NoteEntity> {
     return this.httpClient.put<NoteEntity>(this.baseUrl + '/notes', note);
-  }
-
-  getNote(id: number): Observable<NoteEntity> {
-    return this.httpClient.get<NoteEntity>(`${this.baseUrl}/notes/${id}`);
   }
 }

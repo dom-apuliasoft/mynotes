@@ -33,9 +33,7 @@ export class NoteEditorComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (!id) return;
 
-    this.noteService
-      .getNote(+id)
-      .subscribe((data) => this.setFetchedNote(data));
+    this.noteService.get(+id).subscribe((data) => this.setFetchedNote(data));
   }
 
   private setFetchedNote(note: NoteEntity): void {
@@ -55,7 +53,7 @@ export class NoteEditorComponent implements OnInit {
       ...newContent,
     };
 
-    this.noteService.saveNote(this.note).subscribe(
+    this.noteService.save(this.note).subscribe(
       () => this.goBack(),
       (err) => alert(err.error.message)
     );

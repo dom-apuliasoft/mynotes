@@ -2,11 +2,11 @@
   <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title" modal-title>
     Add note to notespace
   </h3>
-  <div *ngFor="let note of availableNotes; last as isLast"
+  <div *ngFor="let notespace of availableNotespaces; last as isLast"
     class="flex p-2 justify-between items-center border-solid border-b border-gray-200"
     [ngClass]="{'border-solid border-b border-gray-200': !isLast}" modal-content>
-    <p>{{note.title}}</p>
-    <button class="btn btn-blue" (click)="addNote(note)">Add</button>
+    <p>{{notespace.name}}</p>
+    <button class="btn btn-blue" (click)="addToNotespace(notespace)">Add</button>
   </div>
   <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse" modal-action>
     <button type="button" (click)="close()"
