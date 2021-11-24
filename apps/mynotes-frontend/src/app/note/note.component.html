@@ -8,12 +8,12 @@
     </fa-icon>
   </div>
   <div card-content>
-    <div class="flex flex-wrap my-2 gap-1" *ngIf="note.notespaces">
+    <div class="flex flex-wrap mt-2 mb-5 gap-1" *ngIf="note.notespaces">
       <div *ngFor="let notespace of note.notespaces" [style.background-color]="notespace.color"
         class="cursor-pointer w-5 h-5 rounded-full" [title]="notespace.name" routerLink="/notespaces/{{notespace.id}}">
       </div>
     </div>
-    <p class="mt-2 text-gray-600 leading-5 whitespace-pre-line">{{note.content}}</p>
+    <p class="text-gray-600 text-lg leading-5 truncate flex-1">{{note.content}}</p>
   </div>
   <div class="flex justify-end mt-4 gap-2" card-action>
     <button
